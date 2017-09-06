@@ -3,7 +3,7 @@ import '../css/basis.css';
 import basis from '../js/basis';
 import Time from '../js/Time';
 
-
+var number=0;
 class Console extends Component {
     constructor(props){
         super();
@@ -21,27 +21,37 @@ class Console extends Component {
     }
     addConsole(e){
         var temp=this.state.consoleShow;
-        if(e.keyCode==13){
-            temp.push(e.target.value)
+        var history=this.state.history;
+        var value=e.target.value;
+        if(e.keyCode===13){
+            history.push("[Q"+number+"]"+value)
+            temp.push("[Q"+number+++"]"+value);
             e.target.value=""
             this.setState({
                 consoleShow:temp
             })
+            this.setState({
+                history:history
+            })
+            basis.judgment(value,this)
         };
-
+    }
+    clear(){
+        this.setState({
+            consoleShow:[]
+        })
     }
 
     render(){
         let list=this.state.consoleShow.map((value,index)=>{
             return(
-                <div>[Q{index}]  {value}</div>
+                <div key={index}> {value}</div>
             )
         })
         return (
             <div>
                <Time data={this.state.time}/>
                {list}
-               
                <span>></span><input id="setInput" onKeyDown={this.addConsole.bind(this)} autoFocus type="text"/>
             </div>
         )
