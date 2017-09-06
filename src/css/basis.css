@@ -1,0 +1,90 @@
+body {
+	background: #000000;
+	color: #fff;
+	font-family: meiryo, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	height: 100%;
+	padding: 0;
+	width: 90%;
+	font-family: 幼圆;
+	margin: 6px 10px !important;
+}
+input{
+	outline:none;
+	border: 0px;
+	background: #000000;
+	color: #fff;
+	font-family: meiryo, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	width: 80%;
+	font-family: 幼圆;
+}
+
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+
+img,
+body,
+html {
+	border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+	font-style: normal;
+	font-weight: 400;
+}
+
+ol,
+ul,li {
+	list-style: none;
+}
+
+caption,
+th {
+	text-align: left;
+}
+
+q:before,
+q:after {
+	content: '';
+}
+
+a,
+a:visited {
+	color: #4e7aa7;
+	text-decoration: none;
+}
+
+a:hover,
+a:active {
+	color: #5d92c9;
+	text-decoration: none;
+}
+span{
+	font-size: 10px
+}
+
+

@@ -2,19 +2,13 @@
  * Created by CL on 2017/9/4.
  */
 import React, { Component } from 'react';
-function newApp() {
-    let webapi = 'http://192.168.0.207:8097/';
-    return {
-        webapi: webapi
-    }
-}
-var app = new newApp();
-var url = app.webapi + 'api/user/GetUserList';
-
+import '../css/basis.css';
+import basis from '../js/basis';
+var url = basis.webapi + 'api/user/GetUserList';
 class Example extends Component {
     constructor(props) {
         super(props);
-        this.state = { loginData: [] };
+        this.state = {loginData: []};
         fetch(url).then(res => {
             //解析fetch请求返回的数据
             res.json().then(data => {
@@ -26,7 +20,7 @@ class Example extends Component {
             console.log(err);
         });
     }
-
+    
     render() {
         let listdata = this.state.loginData.map((data, index) => {
             var temp= [];
