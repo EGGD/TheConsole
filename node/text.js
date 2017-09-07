@@ -28,14 +28,13 @@ const server = http.createServer((req, res) => {
         addUser.addUserData(connection, nodejsSqlStatement, inIt, res);
     } else if (inIt.url_info.pathname === '/post') {
         var json=[],req=res;
-        http.get('http://xtk.azurewebsites.net/BingDictService.aspx?Word=name', (res) => {
+        http.get('http://xtk.azurewebsites.net/BingDictService.aspx?Word='+encodeURIComponent(inIt.value), (res) => {
             res.setEncoding('utf-8');
             let rawData = '';
             res.on('data', (chunk) => { rawData += chunk; });
             res.on('end', () => {
                 try {
                     const parsedData = JSON.parse(rawData);
-                    console.log(parsedData);
                 } catch (e) {
                     console.error(e.message);
                 }

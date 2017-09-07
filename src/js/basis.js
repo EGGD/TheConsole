@@ -22,12 +22,18 @@ function judgment(value,that){
         //翻译
         value=value.split(" ")[1]
         var url='http://xtk.azurewebsites.net/BingDictService.aspx?Word='+value;
-        fetch('http://127.0.0.1:3000/post').then(res=>{
-            console.log("Response succeeded?", JSON.stringify(res.ok));
-            console.log(JSON.stringify(res));
-            // res.json().then(data=>{
-            //     console.log(data);
-            // })
+        fetch('http://127.0.0.1:3000/post?value='+value).then(res=>{
+            // res.json();
+            res.json().then(data=>{
+                temp=temp.concat(['-------翻译内容为------']);
+                let dataArr=data.defs.map((value,index)=>{
+                    value.def=index+":"+value.def
+                    temp=temp.concat(value.def,['-----------------------'])
+                    tempPush(that,temp);
+                    return value.def
+                })
+                
+            })
         })
     }else if(value==="history"){
         //历史
