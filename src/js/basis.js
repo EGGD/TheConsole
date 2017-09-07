@@ -48,6 +48,7 @@ function judgment(value,that){
         temp.push('miss')
         tempPush(that,temp)
     }
+    
 }
 function tempPush(that,value){
     that.setState({

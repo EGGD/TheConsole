@@ -12,6 +12,7 @@ class Console extends Component {
             history:[],
             time:new Date().toString()
         };
+        this.addConsole=this.addConsole.bind(this);  
         var that=this;
         setInterval(()=>{
             that.setState({
@@ -45,7 +46,7 @@ class Console extends Component {
             e.preventDefault();
         }else if(e.keyCode===8){
             historyLength=this.state.history.length-1;
-        };
+        };              
     }
     clear(){
         this.setState({
@@ -63,7 +64,8 @@ class Console extends Component {
             <div>
                <Time data={this.state.time}/>
                {list}
-               <span>></span><input id="setInput"  onKeyDown={this.addConsole.bind(this)} autoFocus type="text"/>
+               <span>></span><input id="setInput"  onKeyDown={this.addConsole} autoFocus type="text"/>
+               <div></div>
             </div>
         )
     }
