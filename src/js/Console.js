@@ -3,7 +3,7 @@ import '../css/basis.css';
 import basis from '../js/basis';
 import Time from '../js/Time';
 
-var number=0;
+var number=0,historyLength;
 class Console extends Component {
     constructor(props){
         super();
@@ -23,8 +23,9 @@ class Console extends Component {
         var temp=this.state.consoleShow;
         var history=this.state.history;
         var value=e.target.value;
+        // console.log(e.keyCode);
         if(e.keyCode===13){
-            history.push("[Q"+number+"]"+value)
+            history.push(value)
             temp.push("[Q"+number+++"]"+value);
             e.target.value=""
             this.setState({
@@ -34,6 +35,16 @@ class Console extends Component {
                 history:history
             })
             basis.judgment(value,this)
+            historyLength=this.state.history.length-1;
+        }else if(e.keyCode===38){
+            e.target.value=historyLength===0?this.state.history[historyLength]:this.state.history[historyLength--];
+            e.preventDefault();
+        }else if(e.keyCode===40){
+            var length=this.state.history.length-1;
+            e.target.value=historyLength===length?this.state.history[historyLength]:this.state.history[++historyLength];
+            e.preventDefault();
+        }else if(e.keyCode===8){
+            historyLength=this.state.history.length-1;
         };
     }
     clear(){
@@ -52,7 +63,7 @@ class Console extends Component {
             <div>
                <Time data={this.state.time}/>
                {list}
-               <span>></span><input id="setInput" onKeyDown={this.addConsole.bind(this)} autoFocus type="text"/>
+               <span>></span><input id="setInput"  onKeyDown={this.addConsole.bind(this)} autoFocus type="text"/>
             </div>
         )
     }
