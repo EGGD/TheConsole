@@ -13,6 +13,9 @@ function judgment(value,that){
     ];
     if(value==="clear"){
         that.clear();
+        that.setState({
+            rotateSpan:true
+        })
     }else if(value.split(" ")[0]==="random"){
         //随机数
         value=value.split(" ")[1];
@@ -20,7 +23,7 @@ function judgment(value,that){
         tempPush(that,temp)
     }else if(value.split(" ")[0]==="F"){
         //翻译
-        value=value.split(" ")[1]
+        value = value.replace(/^\S+\s+/,"");
         var url='http://xtk.azurewebsites.net/BingDictService.aspx?Word='+value;
         fetch('http://127.0.0.1:3000/post?value='+value).then(res=>{
             // res.json();
@@ -54,5 +57,8 @@ function tempPush(that,value){
     that.setState({
         consoleShow:value
     });
+    that.setState({
+        rotateSpan:true
+    })
 }
 

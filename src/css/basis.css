@@ -8,6 +8,7 @@ body {
 	width: 90%;
 	font-family: 幼圆;
 	margin: 6px 10px 20px 6px!important;
+	overflow:auto; 
 }
 input{
 	outline:none;
@@ -86,8 +87,17 @@ a:active {
 span{
 	font-size: 10px
 }
-/* 设置滚条式 */::-webkit-scrollbar {    width: 12px;}
-/* 滚槽 */::-webkit-scrollbar-track {    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0); border-radius: 10px;}
-/* 滚条滑块 */::-webkit-scrollbar-thumb {    border-radius: 10px;    background: rgba(0,0,0);    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);}
-::-webkit-scrollbar-thumb:window-inactive {    background: rgba(255,0,0,0.4);}
+#rotateSpan{
+	display: inline-block;
+	font-size: 11pt;
+	-webkit-animation:circle 1s infinite linear;/*匀速 循环*/
+}
+
+@-webkit-keyframes circle{
+	0%{ transform:rotateZ(0deg); }
+	100%{ transform:rotateZ(-360deg); }
+}
+/*  */
+::-webkit-scrollbar { width: 1px;}
+
 
